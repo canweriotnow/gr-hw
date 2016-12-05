@@ -1,0 +1,37 @@
+#+AUTHOR: Jason Lewis
+#+EMAIL: jason@decomplecting.org
+#+TITLE: gr-hw
+
+
+** Usage
+
+*** Run the application locally
+
+`lein run`
+
+HTTP port is hard-coded to 3000 at the moment, nrepl port to 31337.
+
+For Swagger docs, visit `http://localhost:3000`,
+other routes as specified in exercise.
+
+Alternately:
+
+```
+$ lein repl
+
+=> (require '[gr-hw.user])
+=> (in-ns 'gr-hw.user])
+=> (start)
+```
+** Notes
+
+*** Test Coverage
+
+According to [[https://github.com/cloverage/cloverage][cloverage]], 87.07% of
+forms are currently covered by tests.
+
+Verify by running `lein cloverage` (assuming 'lein-cloverage' is in your
+
+** License
+
+Copyright ©  Jason Lewis
