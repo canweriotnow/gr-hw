@@ -1,5 +1,4 @@
-.lein-env
-.lein-failures
+.lein-*
 .nrepl-port
 target/*
 

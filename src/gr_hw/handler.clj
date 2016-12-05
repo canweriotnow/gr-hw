@@ -30,13 +30,13 @@
     (context "/records" []
       :tags ["api"]
 
-      (POST "/" [line]
+      (POST "/" [record]
             :return Person
-            :body-params [line :- s/Str]
-            :summary "Adds a record"
+            :body-params [record :- s/Str]
+            :summary "Adds a record!"
             (try
-              (let [parsed (d/split-on-delimiter line)
-                    dmap (d/map-data parsed)]
+              (println record)
+              (let [dmap (d/map-data record)]
                 (swap! d/csv-data conj dmap)
                 (ok dmap))
               (catch Exception e
@@ -44,17 +44,17 @@
 
       (GET "/gender" []
            :return [Person]
-           :body [persons [Person]]
+           ;:body [persons [Person]]
            (ok (d/gender-sort @d/csv-data)))
 
       (GET "/birthdate" []
            :return [Person]
-           :body [persons [Person]]
+           ;:body [persons [Person]]
            (ok (d/dob-sort @d/csv-data)))
 
       (GET "/name" []
            :return [Person]
-           :body [persons [Person]]
+           ;:body [persons [Person]]
            (ok (d/lastn-sort @d/csv-data)))
 
       (POST "/echo" []

@@ -54,5 +54,5 @@
 (defn lastn-sort [ms]
   (->>
    ms
-   (sort-by :LastName)
+   (sort-by (juxt :LastName :FirstName))
    reverse))

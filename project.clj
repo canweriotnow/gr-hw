@@ -4,6 +4,7 @@
                  [metosin/compojure-api "1.1.8"]
                  [ring "1.5.0"]
                  [ring/ring-json "0.4.0"]
+                 [org.clojure/data.json "0.2.6"]
                  [org.clojure/data.csv "0.1.3"]
                  [semantic-csv "0.1.0"]
                  [org.clojure/java.jdbc "0.7.0-alpha1"]
