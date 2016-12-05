@@ -16,13 +16,16 @@ other routes as specified in exercise.
 
 Alternately:
 
-```
+#+BEGIN_SRC clojure
+
 $ lein repl
 
 => (require '[gr-hw.user])
 => (in-ns 'gr-hw.user])
 => (start)
-```
+
+#+END_SRC
+
 ** Notes
 
 *** Test Coverage
@@ -30,7 +33,7 @@ $ lein repl
 According to [[https://github.com/cloverage/cloverage][cloverage]], 87.07% of
 forms are currently covered by tests.
 
-Verify by running `lein cloverage` (assuming 'lein-cloverage' is in your
+Verify by running =lein cloverage= (assuming 'lein-cloverage' is in your
 
 ** License
 
