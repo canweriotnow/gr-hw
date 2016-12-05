@@ -7,11 +7,11 @@
 
 *** Run the application locally
 
-`lein run`
+=lein run=
 
 HTTP port is hard-coded to 3000 at the moment, nrepl port to 31337.
 
-For Swagger docs, visit `http://localhost:3000`,
+For Swagger docs, visit =http://localhost:3000=,
 other routes as specified in exercise.
 
 Alternately:
