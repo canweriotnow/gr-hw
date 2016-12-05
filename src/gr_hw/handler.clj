@@ -2,21 +2,16 @@
   (:require [compojure.api.sweet :refer :all]
             [ring.util.http-response :refer :all]
             [schema.core :as s]
+            [schema.coerce :as coerce]
             [gr-hw.data :as d]))
 
-(s/defschema Pizza
-  {:name s/Str
-   (s/optional-key :description) s/Str
-   :size (s/enum :L :M :S)
-   :origin {:country (s/enum :FI :PO)
-            :city s/Str}})
 
 (s/defschema Person
   {:FirstName s/Str
    :LastName  s/Str
-   :Gender    s/Str
+   :Gender    (s/enum "Male" "Female")
    :FavoriteColor s/Str
-   :DateOfBirth s/Str})
+   :DateOfBirth s/Str}) ;; TODO: Validate date format MM/DD/YYYY
 
 (def app
   (api
@@ -35,8 +30,8 @@
             :body-params [record :- s/Str]
             :summary "Adds a record!"
             (try
-              (println record)
               (let [dmap (d/map-data record)]
+                (s/validate Person dmap)
                 (swap! d/csv-data conj dmap)
                 (ok dmap))
               (catch Exception e
@@ -55,10 +50,4 @@
       (GET "/name" []
            :return [Person]
            ;:body [persons [Person]]
-           (ok (d/lastn-sort @d/csv-data)))
-
-      (POST "/echo" []
-        :return Pizza
-        :body [pizza Pizza]
-        :summary "echoes a Pizza"
-        (ok pizza)))))
+           (ok (d/lastn-sort @d/csv-data))))))

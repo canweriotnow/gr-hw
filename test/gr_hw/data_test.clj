@@ -30,15 +30,6 @@
       (doseq [data (data/read-data (first files) (last files))]
         (is (instance? clojure.lang.PersistentArrayMap data))))))
 
-#_(deftest loading-data
-  (testing "Atom is empty at inception"
-    (is (empty? @data-atom)))
-  (testing "Atom gets filled with data"
-    (do
-      (data/load-csv-data data/data-files data-atom)
-      (is (not (empty? @data-atom)))
-      (is (instance? clojure.lang.PersistentArrayMap (first @data-atom))))))
-
 (deftest sorting-fns
   (let [test-data (first (data/load-csv-data data/data-files (atom [])))]
     (testing "Gender Sort"
